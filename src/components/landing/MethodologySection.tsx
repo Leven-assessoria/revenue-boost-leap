@@ -31,7 +31,7 @@ const methodologyItems = [
 
 const MethodologySection = () => {
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-6 md:py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 md:mb-16">
           Conheça a metodologia <span className="text-primary">LEVEN</span>

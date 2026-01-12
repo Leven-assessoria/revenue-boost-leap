@@ -63,7 +63,7 @@ const FormSection = () => {
   };
 
   return (
-    <section id="form-section" className="py-10 md:py-14">
+    <section id="form-section" className="py-6 md:py-8">
       <div className="container mx-auto px-4">
         <div className="bg-card border border-border rounded-2xl p-6 md:p-10 lg:p-12">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
