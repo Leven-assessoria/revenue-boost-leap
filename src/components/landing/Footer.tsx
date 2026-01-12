@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
-            <img alt="LEVEN" className="h-14 md:h-16 w-auto" src="/lovable-uploads/76aa1cc3-7ff3-40fc-a7e7-ac281febb5ea.png" />
+            <img alt="LEVEN" className="h-14 md:h-16 w-auto" src="/lovable-uploads/0444af9b-c61d-4223-ab09-13e5d0dc1fec.png" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Especialistas em marketing e processos comerciais para lojas de móveis. 
               Lotamos sua loja com clientes qualificados.
