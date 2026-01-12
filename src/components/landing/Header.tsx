@@ -1,4 +1,4 @@
-import levenLogo from "@/assets/leven-logo.png";
+import levenLogo from "@/assets/leven-logo-new.png";
 import { Button } from "@/components/ui/button";
 const Header = () => {
   const scrollToForm = () => {
@@ -32,7 +32,7 @@ const Header = () => {
     }} />
 
       <div className="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
-        <img alt="LEVEN" className="h-10 md:h-12 w-auto" src="/lovable-uploads/0b8f82b6-6369-4e3e-8b1d-fb64e5e0e6dd.png" />
+        <img alt="LEVEN" className="h-10 md:h-12 w-auto" src={levenLogo} />
         <nav className="hidden md:flex items-center gap-8">
           <button onClick={scrollToMethodology} className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium">
             Serviços
