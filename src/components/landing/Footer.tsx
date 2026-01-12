@@ -1,5 +1,5 @@
 import { Phone, MapPin, Instagram } from "lucide-react";
-import levenLogo from "@/assets/leven-logo.png";
+import levenLogo from "@/assets/leven-logo-new.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-card border-t border-border">
@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
-            <img alt="LEVEN" className="h-14 md:h-16 w-auto" src="/lovable-uploads/0444af9b-c61d-4223-ab09-13e5d0dc1fec.png" />
+            <img alt="LEVEN" className="h-14 md:h-16 w-auto" src={levenLogo} />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Especialistas em marketing e processos comerciais para lojas de móveis. 
               Lotamos sua loja com clientes qualificados.
@@ -46,13 +46,13 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Contato</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:contato@levenassessoria.com.br" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-                  contato@levenassessoria.com.br
+                <a href="mailto:assessorialeven@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                  assessorialeven@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground text-sm">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>(XX) XXXXX-XXXX</span>
+                <a href="tel:+5531996486334" className="hover:text-foreground transition-colors">(31) 99648-6334</a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 text-primary" />
