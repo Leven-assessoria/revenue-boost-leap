@@ -8,7 +8,7 @@ const CTASection = () => {
   };
 
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-6 md:py-8">
       <div className="container mx-auto px-4">
         <div className="relative border border-border rounded-2xl p-8 md:p-12 lg:p-16 text-center overflow-hidden">
           {/* Grid mesh background */}

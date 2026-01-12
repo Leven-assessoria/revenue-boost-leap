@@ -6,14 +6,14 @@ const Footer = () => {
 
   return (
     <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-4 py-10 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
             <img 
               src={levenLogo} 
               alt="LEVEN" 
-              className="h-16 md:h-20 w-auto"
+              className="h-14 md:h-16 w-auto"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Especialistas em marketing e processos comerciais para lojas de móveis. 
@@ -90,7 +90,7 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
             © {currentYear} LEVEN Assessoria. Todos os direitos reservados.
           </p>
