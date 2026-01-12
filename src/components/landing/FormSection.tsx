@@ -51,11 +51,11 @@ const FormSection = () => {
     // Map form fields to Google Form entry IDs
     // These entry IDs need to match the Google Form fields
     const formDataToSend = new FormData();
-    formDataToSend.append("entry.1277095329", formData.name); // Nome
-    formDataToSend.append("entry.995005981", formData.email); // Email
-    formDataToSend.append("entry.1155533672", fullPhone); // Telefone
-    formDataToSend.append("entry.1579749043", formData.company); // Nome da empresa
-    formDataToSend.append("entry.815399500", formData.revenue); // Faturamento mensal
+    formDataToSend.append("entry.2140489623", formData.name); // Nome
+    formDataToSend.append("entry.1837813132", formData.email); // Email
+    formDataToSend.append("entry.846955133", fullPhone); // Telefone
+    formDataToSend.append("entry.458580831", formData.company); // Nome da empresa
+    formDataToSend.append("entry.1058520858", formData.revenue); // Faturamento mensal
 
     try {
       // Use fetch with no-cors mode to submit to Google Forms
