@@ -43,23 +43,51 @@ const FormSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeVKF8QE6xQ1haFaN2eHGjMQ6J5-4ahQvSmocKvhjazGQUpVw/formResponse";
+    
+    // Combine country code with phone number
+    const fullPhone = `${formData.countryCode} ${formData.phone}`;
+    
+    // Map form fields to Google Form entry IDs
+    // These entry IDs need to match the Google Form fields
+    const formDataToSend = new FormData();
+    formDataToSend.append("entry.1277095329", formData.name); // Nome
+    formDataToSend.append("entry.995005981", formData.email); // Email
+    formDataToSend.append("entry.1155533672", fullPhone); // Telefone
+    formDataToSend.append("entry.1579749043", formData.company); // Nome da empresa
+    formDataToSend.append("entry.815399500", formData.revenue); // Faturamento mensal
 
-    toast({
-      title: "Formulário enviado com sucesso!",
-      description: "Em breve um de nossos especialistas entrará em contato.",
-    });
+    try {
+      // Use fetch with no-cors mode to submit to Google Forms
+      await fetch(googleFormUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: formDataToSend,
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      countryCode: "+55",
-      phone: "",
-      company: "",
-      revenue: "",
-    });
-    setIsSubmitting(false);
+      toast({
+        title: "Formulário enviado com sucesso!",
+        description: "Em breve um de nossos especialistas entrará em contato.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        countryCode: "+55",
+        phone: "",
+        company: "",
+        revenue: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
