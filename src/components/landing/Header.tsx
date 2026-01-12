@@ -1,4 +1,4 @@
-import levenLogo from "@/assets/leven-logo-new.png";
+import levenLogo from "@/assets/leven-logo-full.png";
 import { Button } from "@/components/ui/button";
 const Header = () => {
   const scrollToForm = () => {
