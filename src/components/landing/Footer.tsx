@@ -1,20 +1,13 @@
 import { Phone, MapPin, Instagram } from "lucide-react";
 import levenLogo from "@/assets/leven-logo.png";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-card border-t border-border">
+  return <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
-            <img 
-              src={levenLogo} 
-              alt="LEVEN" 
-              className="h-14 md:h-16 w-auto"
-            />
+            <img alt="LEVEN" className="h-14 md:h-16 w-auto" src="/lovable-uploads/76aa1cc3-7ff3-40fc-a7e7-ac281febb5ea.png" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Especialistas em marketing e processos comerciais para lojas de móveis. 
               Lotamos sua loja com clientes qualificados.
@@ -26,18 +19,12 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Links Rápidos</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="#form-section" 
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                >
+                <a href="#form-section" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Nossos Serviços
                 </a>
               </li>
               <li>
-                <a 
-                  href="#form-section" 
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                >
+                <a href="#form-section" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Contato
                 </a>
               </li>
@@ -59,10 +46,7 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Contato</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="mailto:contato@levenassessoria.com.br" 
-                  className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                >
+                <a href="mailto:contato@levenassessoria.com.br" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   contato@levenassessoria.com.br
                 </a>
               </li>
@@ -75,11 +59,7 @@ const Footer = () => {
                 <span>Brasil</span>
               </li>
               <li className="pt-2">
-                <a 
-                  href="#" 
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border hover:border-primary hover:text-primary transition-colors"
-                  aria-label="Instagram"
-                >
+                <a href="#" className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border hover:border-primary hover:text-primary transition-colors" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
               </li>
@@ -95,23 +75,15 @@ const Footer = () => {
             © {currentYear} LEVEN Assessoria. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <a 
-              href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               Política de Privacidade
             </a>
-            <a 
-              href="#" 
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-            >
+            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               Termos de Uso
             </a>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
