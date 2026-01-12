@@ -73,14 +73,12 @@ const FormSection = () => {
     form.target = iframeName;
     form.style.display = "none";
 
-    const fields = [
+    const fields: Array<{ name: string; value: string }> = [
       { name: "entry.2140489623", value: formData.name },
       { name: "entry.1837813132", value: formData.email },
       { name: "entry.846955133", value: fullPhone },
       { name: "entry.458580831", value: formData.company },
       { name: "entry.1058520858", value: formData.revenue },
-      // Some Google Forms accept better when a submit field is present
-      { name: "submit", value: "Submit" },
     ];
 
     fields.forEach(({ name, value }) => {
@@ -93,7 +91,10 @@ const FormSection = () => {
 
     try {
       document.body.appendChild(form);
-      form.submit();
+
+      // NOTE: calling the prototype avoids "form.submit is not a function" if any field name
+      // ever clobbers the form's submit method.
+      HTMLFormElement.prototype.submit.call(form);
 
       // Remove only the temporary form; keep iframe for future submissions.
       window.setTimeout(() => {
