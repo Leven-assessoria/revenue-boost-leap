@@ -1,4 +1,5 @@
 import levenLogo from "@/assets/leven-logo.png";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const scrollToForm = () => {
@@ -14,12 +15,13 @@ const Header = () => {
           alt="LEVEN" 
           className="h-10 md:h-12 w-auto"
         />
-        <button
+        <Button
           onClick={scrollToForm}
-          className="hidden md:block text-sm text-muted-foreground hover:text-foreground transition-colors"
+          variant="outline"
+          className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
         >
-          Fale Conosco
-        </button>
+          Agendar Reunião
+        </Button>
       </div>
     </header>
   );

@@ -1,4 +1,4 @@
-import { ArrowRight, TrendingUp, Target, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
@@ -9,19 +9,28 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
-      {/* Floating decorative icons */}
-      <div className="absolute top-32 left-8 md:left-16 opacity-20 animate-pulse">
-        <TrendingUp className="w-12 h-12 md:w-16 md:h-16 text-primary" />
-      </div>
-      <div className="absolute top-48 right-8 md:right-20 opacity-20 animate-pulse delay-75">
-        <Target className="w-10 h-10 md:w-14 md:h-14 text-accent" />
-      </div>
-      <div className="absolute bottom-32 left-12 md:left-24 opacity-20 animate-pulse delay-150">
-        <Zap className="w-8 h-8 md:w-12 md:h-12 text-primary" />
-      </div>
-
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+      {/* Grid mesh background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+        }}
+      />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/80 to-background pointer-events-none" />
+      
+      {/* Radial gradient for depth */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center top, hsl(var(--primary) / 0.15) 0%, transparent 60%)',
+        }}
+      />
 
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 max-w-5xl mx-auto">
