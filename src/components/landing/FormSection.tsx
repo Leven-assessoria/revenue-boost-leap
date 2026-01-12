@@ -69,9 +69,14 @@ const FormSection = () => {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Left Column - Steps */}
             <div className="space-y-8">
-              <h2 className="text-2xl md:text-3xl font-bold">
-                Cadastre-se e receba o contato do nosso time!
-              </h2>
+              <div>
+                <p className="text-primary font-medium mb-2">
+                  Especialistas em marketing e processos comerciais para lojas de móveis
+                </p>
+                <h2 className="text-2xl md:text-3xl font-bold">
+                  Cadastre-se e receba o contato do nosso time!
+                </h2>
+              </div>
 
               <div className="space-y-6">
                 {/* Step 1 */}
