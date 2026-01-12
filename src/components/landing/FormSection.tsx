@@ -39,34 +39,48 @@ const FormSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     setIsSubmitting(true);
 
-    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeVKF8QE6xQ1haFaN2eHGjMQ6J5-4ahQvSmocKvhjazGQUpVw/formResponse";
-    
+    const googleFormUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLSeVKF8QE6xQ1haFaN2eHGjMQ6J5-4ahQvSmocKvhjazGQUpVw/formResponse";
+
     // Combine country code with phone number
     const fullPhone = `${formData.countryCode} ${formData.phone}`;
 
-    // Create a hidden iframe to submit the form (bypasses CORS)
-    const iframe = document.createElement("iframe");
-    iframe.name = "hidden_iframe";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
+    // Keep a single hidden iframe in the DOM to avoid browsers opening a new tab/window
+    // when the named target doesn't exist (which can make subsequent submits fail).
+    const iframeId = "google-form-target-iframe";
+    const iframeName = "google_form_iframe";
 
-    // Create a hidden form to submit
+    let iframe = document.getElementById(iframeId) as HTMLIFrameElement | null;
+    if (!iframe) {
+      iframe = document.createElement("iframe");
+      iframe.id = iframeId;
+      iframe.name = iframeName;
+      iframe.style.display = "none";
+      iframe.setAttribute("aria-hidden", "true");
+      document.body.appendChild(iframe);
+    }
+
+    // Create a hidden form to submit (works without CORS)
     const form = document.createElement("form");
     form.method = "POST";
     form.action = googleFormUrl;
-    form.target = "hidden_iframe";
+    form.target = iframeName;
+    form.style.display = "none";
 
-    // Add form fields
     const fields = [
       { name: "entry.2140489623", value: formData.name },
       { name: "entry.1837813132", value: formData.email },
       { name: "entry.846955133", value: fullPhone },
       { name: "entry.458580831", value: formData.company },
       { name: "entry.1058520858", value: formData.revenue },
+      // Some Google Forms accept better when a submit field is present
+      { name: "submit", value: "Submit" },
     ];
 
     fields.forEach(({ name, value }) => {
@@ -77,29 +91,42 @@ const FormSection = () => {
       form.appendChild(input);
     });
 
-    document.body.appendChild(form);
-    form.submit();
+    try {
+      document.body.appendChild(form);
+      form.submit();
 
-    // Cleanup after submission
-    setTimeout(() => {
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-    }, 1000);
+      // Remove only the temporary form; keep iframe for future submissions.
+      window.setTimeout(() => {
+        try {
+          form.remove();
+        } catch {
+          // noop
+        }
+      }, 10_000);
 
-    toast({
-      title: "Formulário enviado com sucesso!",
-      description: "Em breve um de nossos especialistas entrará em contato.",
-    });
+      toast({
+        title: "Formulário enviado com sucesso!",
+        description: "Em breve um de nossos especialistas entrará em contato.",
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      countryCode: "+55",
-      phone: "",
-      company: "",
-      revenue: "",
-    });
-    setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        countryCode: "+55",
+        phone: "",
+        company: "",
+        revenue: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast({
+        title: "Erro ao enviar",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
