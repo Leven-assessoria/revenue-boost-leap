@@ -47,47 +47,59 @@ const FormSection = () => {
     
     // Combine country code with phone number
     const fullPhone = `${formData.countryCode} ${formData.phone}`;
-    
-    // Map form fields to Google Form entry IDs
-    // These entry IDs need to match the Google Form fields
-    const formDataToSend = new FormData();
-    formDataToSend.append("entry.2140489623", formData.name); // Nome
-    formDataToSend.append("entry.1837813132", formData.email); // Email
-    formDataToSend.append("entry.846955133", fullPhone); // Telefone
-    formDataToSend.append("entry.458580831", formData.company); // Nome da empresa
-    formDataToSend.append("entry.1058520858", formData.revenue); // Faturamento mensal
 
-    try {
-      // Use fetch with no-cors mode to submit to Google Forms
-      await fetch(googleFormUrl, {
-        method: "POST",
-        mode: "no-cors",
-        body: formDataToSend,
-      });
+    // Create a hidden iframe to submit the form (bypasses CORS)
+    const iframe = document.createElement("iframe");
+    iframe.name = "hidden_iframe";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
 
-      toast({
-        title: "Formulário enviado com sucesso!",
-        description: "Em breve um de nossos especialistas entrará em contato.",
-      });
+    // Create a hidden form to submit
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = googleFormUrl;
+    form.target = "hidden_iframe";
 
-      setFormData({
-        name: "",
-        email: "",
-        countryCode: "+55",
-        phone: "",
-        company: "",
-        revenue: "",
-      });
-    } catch (error) {
-      console.error("Erro ao enviar formulário:", error);
-      toast({
-        title: "Erro ao enviar",
-        description: "Por favor, tente novamente mais tarde.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Add form fields
+    const fields = [
+      { name: "entry.2140489623", value: formData.name },
+      { name: "entry.1837813132", value: formData.email },
+      { name: "entry.846955133", value: fullPhone },
+      { name: "entry.458580831", value: formData.company },
+      { name: "entry.1058520858", value: formData.revenue },
+    ];
+
+    fields.forEach(({ name, value }) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+
+    // Cleanup after submission
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 1000);
+
+    toast({
+      title: "Formulário enviado com sucesso!",
+      description: "Em breve um de nossos especialistas entrará em contato.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      countryCode: "+55",
+      phone: "",
+      company: "",
+      revenue: "",
+    });
+    setIsSubmitting(false);
   };
 
   return (
