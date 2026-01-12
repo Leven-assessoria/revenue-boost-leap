@@ -1,5 +1,5 @@
 import { Phone, MapPin, Instagram } from "lucide-react";
-import levenLogo from "@/assets/leven-logo-new.png";
+import levenLogo from "@/assets/leven-logo-full.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-card border-t border-border">
