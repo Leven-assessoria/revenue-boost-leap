@@ -13,7 +13,7 @@ const Footer = () => {
             <img 
               src={levenLogo} 
               alt="LEVEN" 
-              className="h-10 w-auto"
+              className="h-16 md:h-20 w-auto"
             />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Especialistas em marketing e processos comerciais para lojas de móveis. 
@@ -48,9 +48,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Serviços</h4>
             <ul className="space-y-3">
-              <li className="text-muted-foreground text-sm">Tráfego Pago</li>
-              <li className="text-muted-foreground text-sm">Funis de Vendas</li>
-              <li className="text-muted-foreground text-sm">Automação</li>
+              <li className="text-muted-foreground text-sm">Tráfego pago</li>
+              <li className="text-muted-foreground text-sm">Estruturação comercial</li>
+              <li className="text-muted-foreground text-sm">Funis de vendas</li>
             </ul>
           </div>
 

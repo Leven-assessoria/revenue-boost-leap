@@ -8,7 +8,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center pt-20 pb-8 overflow-hidden">
       {/* Grid mesh background */}
       <div 
         className="absolute inset-0 opacity-20"

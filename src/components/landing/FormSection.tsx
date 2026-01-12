@@ -63,16 +63,13 @@ const FormSection = () => {
   };
 
   return (
-    <section id="form-section" className="py-16 md:py-24">
+    <section id="form-section" className="py-10 md:py-14">
       <div className="container mx-auto px-4">
         <div className="bg-card border border-border rounded-2xl p-6 md:p-10 lg:p-12">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Left Column - Steps */}
             <div className="space-y-8">
               <div>
-                <p className="text-primary font-medium mb-2">
-                  Especialistas em marketing e processos comerciais para lojas de móveis
-                </p>
                 <h2 className="text-2xl md:text-3xl font-bold">
                   Cadastre-se e receba o contato do nosso time!
                 </h2>
