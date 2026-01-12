@@ -105,6 +105,11 @@ const FormSection = () => {
         }
       }, 10_000);
 
+      // Track Lead event on Meta Pixel
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead');
+      }
+
       toast({
         title: "Formulário enviado com sucesso!",
         description: "Em breve um de nossos especialistas entrará em contato.",
