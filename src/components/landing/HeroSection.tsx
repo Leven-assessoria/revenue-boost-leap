@@ -34,7 +34,7 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 text-center relative z-10">
         <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 max-w-5xl mx-auto">
-          Aumentamos o faturamento da sua empresa com o time de{" "}
+          Aumentamos o faturamento da sua loja de móveis com o time de{" "}
           <span className="text-primary">marketing</span> e{" "}
           <span className="text-primary">vendas</span> da LEVEN
         </h1>
