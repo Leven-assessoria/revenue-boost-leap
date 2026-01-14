@@ -35,6 +35,7 @@ const FormSection = () => {
     countryCode: "+55",
     phone: "",
     company: "",
+    instagram: "",
     revenue: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,6 +43,17 @@ const FormSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
+
+    // Validação dos campos obrigatórios
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim() || 
+        !formData.company.trim() || !formData.instagram.trim() || !formData.revenue) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha todos os campos do formulário.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -78,6 +90,7 @@ const FormSection = () => {
       { name: "entry.1837813132", value: formData.email },
       { name: "entry.846955133", value: fullPhone },
       { name: "entry.458580831", value: formData.company },
+      { name: "entry.1834348642", value: formData.instagram },
       { name: "entry.1058520858", value: formData.revenue },
     ];
 
@@ -121,6 +134,7 @@ const FormSection = () => {
         countryCode: "+55",
         phone: "",
         company: "",
+        instagram: "",
         revenue: "",
       });
     } catch (error) {
@@ -252,9 +266,21 @@ const FormSection = () => {
               </div>
 
               <div>
+                <Input
+                  type="text"
+                  placeholder="@seuinstagram"
+                  value={formData.instagram}
+                  onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                  required
+                  className="bg-secondary border-border h-12"
+                />
+              </div>
+
+              <div>
                 <Select
                   value={formData.revenue}
                   onValueChange={(value) => setFormData({ ...formData, revenue: value })}
+                  required
                 >
                   <SelectTrigger className="w-full bg-secondary border-border h-12">
                     <SelectValue placeholder="Qual o seu faturamento mensal?" />
