@@ -268,7 +268,7 @@ const FormSection = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder="@seuinstagram"
+                  placeholder="Qual o @ do Instagram da sua loja?"
                   value={formData.instagram}
                   onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
                   required
