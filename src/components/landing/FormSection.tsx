@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FileText, Phone, Shield, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,7 @@ const revenueOptions = [
 
 const FormSection = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -123,10 +125,10 @@ const FormSection = () => {
         (window as any).fbq('track', 'Lead');
       }
 
-      toast({
-        title: "Formulário enviado com sucesso!",
-        description: "Em breve um de nossos especialistas entrará em contato.",
-      });
+      // Redirecionar para página de obrigado após envio bem-sucedido
+      setTimeout(() => {
+        navigate('/obrigado');
+      }, 500);
 
       setFormData({
         name: "",
